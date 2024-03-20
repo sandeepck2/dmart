@@ -7,32 +7,32 @@ trigger:
 - master
 
 pool:
+  name: dmart
   vmImage: windows-latest
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
-  - 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
-  displyName: Restore
+  displayName: 'Restore'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '**/*.csproj'
     arguments: '--no-restore'
-  displyName: Build
+  displayName: "Buid"
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: '**/*test.csproj'
     arguments: '--no-restore'
-  displyName: Test
+  displayName: 'Test'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -41,4 +41,4 @@ steps:
     projects: '**/CostomerApi.csproj'
     arguments: '--configurarion $(buildConfiguration) --no-restore'
     modifyOutputpath: false
-  displyName: Publish
+  displayName: 'Publish'

@@ -34,11 +34,11 @@ steps:
     arguments: '--no-restore'
   displayName: 'Test'
 
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    publishWebProjects: false
-    projects: '**/CostomerApi.csproj'
+    publishWebProjects: true
     arguments: '--configurarion $(buildConfiguration) --no-restore'
     modifyOutputpath: false
   displayName: 'Publish'
